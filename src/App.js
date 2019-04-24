@@ -34,17 +34,20 @@ class App extends Component{
       .then(res=>res.json())
       .then(data =>{
         console.log('drawnCards', data);
-        if(data.remaining===0){
-          this.removeDeck(id);
-        }else{
+        // if(data.remaining===0){
+        //   this.removeDeck(id);
+        // }else{
           this.setState({
             currentlyDrawnCards:data.cards,
             remaining:{deckId:data.deckId, cards:data.remaining}
+          },()=>{
+            if(data.remaining===0)
+              this.removeDeck(id)
           })
 
-        }
+        })
         
-      })
+      
   }
   render() {
     console.log('remaining state:', this.state.remaining);
