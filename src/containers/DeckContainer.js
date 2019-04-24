@@ -9,7 +9,7 @@ export default class DeckContainer extends Component {
 
     renderDecks=()=>{
         return this.state.decks.map(deck=>{
-            return <Deck key={deck.id} deck={deck} drawCardsHandler={this.props.drawCardsHandler}/>
+            return <Deck key={deck.id} deck={deck} drawCardsHandler={this.props.drawCardsHandler} remaining={this.props.remaining}/>
         })
     }
 
