@@ -21,11 +21,12 @@ class App extends Component{
         console.log('drawnCards', data);
         this.setState({
           currentlyDrawnCards:data.cards,
-          remaining:{deckId:data.id, cards:data.remaining}
+          remaining:{deckId:data.deckId, cards:data.remaining}
         })
       })
   }
   render() {
+    console.log('remaining state:', this.state.remaining);
     return (
       <div className="container-fluid">
         <div className="row draw-bg">
