@@ -16,7 +16,7 @@ export default class DeckContainer extends Component {
                 console.log('create new deck response', deck);
                 if(deck.message){
                     this.setState({
-                        maxDecks:!this.state.maxDecks,
+                        maxDecks:true,
                         message:deck.message,
                     })
                 }else{
@@ -34,6 +34,17 @@ export default class DeckContainer extends Component {
         })
     }
 
+    removeEmptyDeck=(id)=>{
+        let decksCopy = [...this.state.decks];
+        decksCopy.splice(decksCopy.findIndex(deck=>deck.id===id),1) // remove the deck from the decks array
+        // if(decksCopy.length<5) 
+        this.setState({
+            decks:decksCopy,
+            maxDecks:decksCopy.length < 5 ? false : true,
+        })
+        this.props.resetRemoveDeckId();
+    }
+
     componentDidMount(){
         fetch('http://localhost:3000/api/deck')
             .then(res=>res.json())
@@ -44,6 +55,7 @@ export default class DeckContainer extends Component {
             })
     }
     render() {
+        if(this.props.removeDeck) this.removeEmptyDeck(this.props.removeDeck);
         console.log('DeckContainer render==', this.state.decks);
         return (
              <div className="row">

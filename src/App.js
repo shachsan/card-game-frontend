@@ -11,6 +11,21 @@ class App extends Component{
       deckId:'',
       cards:''
     },
+    removeDeckId:false,
+
+  }
+
+  removeDeck=(id)=>{
+
+    this.setState({
+      removeDeckId:id,
+    })
+  }
+
+  resetRemoveDeckId=()=>{
+    this.setState({
+      removeDeckId:!this.state.removeDeckId
+    })
   }
 
   drawCardsHandler=(id)=>{
@@ -19,10 +34,16 @@ class App extends Component{
       .then(res=>res.json())
       .then(data =>{
         console.log('drawnCards', data);
-        this.setState({
-          currentlyDrawnCards:data.cards,
-          remaining:{deckId:data.deckId, cards:data.remaining}
-        })
+        if(data.remaining===0){
+          this.removeDeck(id);
+        }else{
+          this.setState({
+            currentlyDrawnCards:data.cards,
+            remaining:{deckId:data.deckId, cards:data.remaining}
+          })
+
+        }
+        
       })
   }
   render() {
@@ -37,7 +58,10 @@ class App extends Component{
 
         <div className="row">
           <div className="col-md-12">
-            <DeckContainer drawCardsHandler={this.drawCardsHandler} remaining={this.state.remaining}/>
+            <DeckContainer drawCardsHandler={this.drawCardsHandler} 
+                    remaining={this.state.remaining}
+                    removeDeck={this.state.removeDeckId}
+                    resetRemoveDeckId={this.resetRemoveDeckId}/>
           </div>
         </div>
 
