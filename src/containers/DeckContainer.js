@@ -24,6 +24,7 @@ export default class DeckContainer extends Component {
                     this.setState({
                         decks:newDecks
                     })
+                    this.props.setRemainingForNewDeck(deck.id)
                 }
             })
     }
@@ -37,7 +38,6 @@ export default class DeckContainer extends Component {
     removeEmptyDeck=(id)=>{
         let decksCopy = [...this.state.decks];
         decksCopy.splice(decksCopy.findIndex(deck=>deck.id===id),1) // remove the deck from the decks array
-        // if(decksCopy.length<5) 
         this.setState({
             decks:decksCopy,
             maxDecks:decksCopy.length < 5 ? false : true,

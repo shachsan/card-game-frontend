@@ -7,16 +7,19 @@ class App extends Component{
 
   state={
     currentlyDrawnCards:[],
-    remaining:{
-      deckId:'',
-      cards:''
-    },
+    remaining:{},
     removeDeckId:false,
+  }
 
+  setRemainingForNewDeck=(id)=>{
+    let newRemaining={...this.state.remaining}
+    newRemaining[id]=52;
+    this.setState({
+      remaining:newRemaining,
+    })
   }
 
   removeDeck=(id)=>{
-
     this.setState({
       removeDeckId:id,
     })
@@ -34,21 +37,19 @@ class App extends Component{
       .then(res=>res.json())
       .then(data =>{
         console.log('drawnCards', data);
-        // if(data.remaining===0){
-        //   this.removeDeck(id);
-        // }else{
+        let newRemaining = {...this.state.remaining};
+        newRemaining[data.deckId]=data.remaining; 
           this.setState({
             currentlyDrawnCards:data.cards,
-            remaining:{deckId:data.deckId, cards:data.remaining}
+            remaining:newRemaining
           },()=>{
             if(data.remaining===0)
               this.removeDeck(id)
           })
 
         })
-        
-      
   }
+
   render() {
     console.log('remaining state:', this.state.remaining);
     return (
@@ -63,6 +64,7 @@ class App extends Component{
           <div className="col-md-12">
             <DeckContainer drawCardsHandler={this.drawCardsHandler} 
                     remaining={this.state.remaining}
+                    setRemainingForNewDeck={this.setRemainingForNewDeck}
                     removeDeck={this.state.removeDeckId}
                     resetRemoveDeckId={this.resetRemoveDeckId}/>
           </div>
