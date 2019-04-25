@@ -31,7 +31,8 @@ export default class DeckContainer extends Component {
 
     renderDecks=()=>{
         return this.state.decks.map(deck=>{
-            return <Deck key={deck.id} deck={deck} drawCardsHandler={this.props.drawCardsHandler} remaining={this.props.remaining}/>
+            return <Deck key={deck.id} deck={deck} drawCardsHandler={this.props.drawCardsHandler} 
+                        remaining={this.props.remaining}/>
         })
     }
 
@@ -54,14 +55,14 @@ export default class DeckContainer extends Component {
                 })
             })
     }
+
     render() {
         if(this.props.removeDeck) this.removeEmptyDeck(this.props.removeDeck);
-        console.log('DeckContainer render==', this.state.decks);
         return (
              <div className="row">
                 <div className="col-md-2 m-auto text-center" style={{display:'inline-block'}}>
                     {this.state.maxDecks ?  <div className="bg-danger text-white text-center p-1 mt-2">{this.state.message}</div> : null}
-                    <button className="btn btn-primary btn-lg" onClick={this.createNewDeck}>New Deck</button>
+                    <button className="btn btn-primary mt-2 mb-2 btn-lg" onClick={this.createNewDeck}>New Deck</button>
                     
                 </div>
 

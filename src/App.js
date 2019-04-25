@@ -32,11 +32,9 @@ class App extends Component{
   }
 
   drawCardsHandler=(id)=>{
-    console.log('deck id: ', id);
     fetch(`http://localhost:3000/api/deck/${id}/draw`)
       .then(res=>res.json())
       .then(data =>{
-        console.log('drawnCards', data);
         let newRemaining = {...this.state.remaining};
         newRemaining[data.deckId]=data.remaining; 
           this.setState({
@@ -51,7 +49,6 @@ class App extends Component{
   }
 
   render() {
-    console.log('remaining state:', this.state.remaining);
     return (
       <div className="container-fluid">
         <div className="row draw-bg">
@@ -60,7 +57,7 @@ class App extends Component{
           </div>
         </div>
 
-        <div className="row deck-container">
+        <div className="row">
           <div className="col-md-12">
             <DeckContainer drawCardsHandler={this.drawCardsHandler} 
                     remaining={this.state.remaining}
