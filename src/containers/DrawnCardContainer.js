@@ -9,11 +9,15 @@ export default class DrawnCardContainer extends Component {
         cards.map(card=>{
             return cardImgs.push(
                 <div className="draw-card" key={card.value+card.suit}>
-                    <div className={`card-top-value card-value-${card.suit}`}>{card.value}</div>
-                    <div className={`top-${card.suit}`}></div>
-                    <div className={card.suit}></div>
-                    <div className={`bottom-${card.suit}`}></div>
-                    <div className={`card-bottom-value card-value-${card.suit}`}>{card.value}</div>
+                    <div className={`card-value card-value-${card.suit}`}>{card.value}</div>
+                    <div className={`top-${card.suit} top-suit`}></div>
+                    <div className={
+                        card.value==='J' ||
+                        card.value==='Q' ||
+                        card.value==='K' ?
+                        `${card.value+card.suit} suits`  : `${card.suit} suits`}></div>
+                    <div className={`bottom-${card.suit} bottom-suit`}></div>
+                    <div className={`card-bottom-value card-value card-value-${card.suit}`}>{card.value}</div>
                     
                 </div>)
         })
