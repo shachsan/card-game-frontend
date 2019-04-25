@@ -6,9 +6,9 @@ export default class DrawnCardContainer extends Component {
     showDrawCards=(cards)=>{
         console.log('drawn cards in DrawnCardContainer', cards);
         const cardImgs=[];
-        cards.map(card=>{
+        cards.map((card, i)=>{
             return cardImgs.push(
-                <div className="draw-card" key={card.value+card.suit}>
+                <div className={`draw-card draw-card-${i}`} key={card.value+card.suit}>
                     <div className={`card-value card-value-${card.suit}`}>{card.value}</div>
                     <div className={`top-${card.suit} top-suit`}></div>
                     <div className={

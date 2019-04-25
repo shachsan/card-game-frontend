@@ -59,13 +59,13 @@ export default class DeckContainer extends Component {
         console.log('DeckContainer render==', this.state.decks);
         return (
              <div className="row">
-                <div className="col-md-2" style={{display:'inline-block'}}>
+                <div className="col-md-2 mt-auto mb-auto" style={{display:'inline-block'}}>
                     {this.state.maxDecks ?  <div className="bg-danger text-white text-center p-1 mt-2">{this.state.message}</div> : null}
                     <button className="btn btn-primary mt-2" onClick={this.createNewDeck}>New Deck</button>
                     
                 </div>
 
-                <div className="col-md-10">
+                <div className="col-md-10 deck-area">
                     {this.renderDecks()}
                 </div>
              </div>

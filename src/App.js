@@ -60,7 +60,7 @@ class App extends Component{
           </div>
         </div>
 
-        <div className="row">
+        <div className="row deck-container">
           <div className="col-md-12">
             <DeckContainer drawCardsHandler={this.drawCardsHandler} 
                     remaining={this.state.remaining}

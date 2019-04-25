@@ -1,3 +1,36 @@
+/* Animation start */
+@keyframes draw{
+  0%{left:70px; top:350px;}
+  100%{left:0px; top:0px;}
+}
+.draw-card-0{
+  position: relative;
+  animation-name: draw;
+  animation-duration: 0.3s;
+  
+}
+.draw-card-1{
+  position: relative;
+  animation-name: draw;
+  animation-duration: 0.5s;
+}
+.draw-card-2{
+  position: relative;
+  animation-name: draw;
+  animation-duration: 0.7s;
+}
+.draw-card-3{
+  position: relative;
+  animation-name: draw;
+  animation-duration: 0.9s;
+}
+.draw-card-4{
+  position: relative;
+  animation-name: draw;
+  animation-duration: 1.3s;
+}
+/* Animation End */
+
 
 .container-fluid {
   height:100%;
@@ -8,7 +41,7 @@
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
-  height: 70vh;
+  height: 75vh;
 }
 
 .deck-wrapper{
@@ -23,10 +56,10 @@
   margin: auto;
   text-align: center;
   cursor: pointer;
-  background-image: url('./img/deckback.jpeg');
+  background-image: url('./img/deckback.png');
   background-position: center; 
   background-repeat: no-repeat; 
-  background-size: cover;
+  background-size: 90px 120px;
 }
 
 .card-container{
@@ -87,7 +120,6 @@
 }
 
 /* Image cards */
-
 .Jdiamond{
   background-image: url("./img/diamond-jack.png");
 }
@@ -137,6 +169,16 @@
   margin-bottom: -10px;
 }
 
+.deck-area{
+  background-image: url('./img/deck-container.jpg');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+.deck-container{
+  z-index: 10;
+}
 
 .card-value-spades, .card-value-club{
   color: black;
