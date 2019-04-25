@@ -1,6 +1,6 @@
 /* Animation start */
 @keyframes draw{
-  0%{left:70px; top:350px;}
+  0%{left:10px; top:350px;}
   100%{left:0px; top:0px;}
 }
 .draw-card-0{
